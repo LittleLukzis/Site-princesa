@@ -88,6 +88,8 @@
   </style>
 </head>
 <body>
+
+  <!-- ÁUDIO OCULTO -->
   <audio id="player">
     <source src="musicas/a-thousand-years.mp3" type="audio/mpeg">
     Seu navegador não suporta áudio.
@@ -98,10 +100,12 @@
     <p>Do seu Momozinho arrependido...</p>
   </header>
 
+  <!-- BOTÃO DE MÚSICA -->
   <div class="musica">
     <button id="botaoMusica">▶️ Tocar nossa música</button>
   </div>
 
+  <!-- CARTA -->
   <section class="carta">
     <p>
       Princesa,<br><br>
@@ -112,6 +116,7 @@
     </p>
   </section>
 
+  <!-- GALERIA DE FOTOS -->
   <section class="galeria">
     <img src="fotos/1.jpg" alt="Princesa 1">
     <img src="fotos/2.jpg" alt="Princesa 2">
@@ -119,28 +124,35 @@
     <img src="fotos/4.jpg" alt="Princesa 3">
   </section>
 
+  <!-- BOTÃO DE PERDÃO -->
   <section class="perdao">
     <h2>Se você me der uma chance...</h2>
     <button onclick="alert('Te amo pra sempre, minha princesa 💖')">Me perdoa, Princesa?</button>
   </section>
 
+  <!-- SCRIPT DO BOTÃO DE MÚSICA -->
   <script>
-    const player = document.getElementById('player');
-    const botaoMusica = document.getElementById('botaoMusica');
+    const player = document.getElementById("player");
+    const botao = document.getElementById("botaoMusica");
 
-    botaoMusica.addEventListener('click', () => {
-      if (player.paused) {
-        player.play();
-        botaoMusica.textContent = '⏸️ Pausar nossa música';
-      } else {
-        player.pause();
-        botaoMusica.textContent = '▶️ Tocar nossa música';
+    botao.addEventListener("click", async () => {
+      try {
+        if (player.paused) {
+          await player.play();
+          botao.textContent = "⏸️ Pausar nossa música";
+        } else {
+          player.pause();
+          botao.textContent = "▶️ Tocar nossa música";
+        }
+      } catch (e) {
+        alert("Clique novamente para permitir o áudio 🎵");
       }
     });
 
-    player.addEventListener('ended', () => {
-      botaoMusica.textContent = '▶️ Tocar nossa música';
+    player.addEventListener("ended", () => {
+      botao.textContent = "▶️ Tocar nossa música";
     });
   </script>
+
 </body>
 </html>
