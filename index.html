@@ -29,19 +29,6 @@
       text-align: center;
       margin-top: 20px;
     }
-    .musica button {
-      background-color: #2980b9;
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      font-size: 1em;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .musica button:hover {
-      background-color: #1f6391;
-    }
     .carta {
       padding: 30px;
       max-width: 800px;
@@ -82,27 +69,29 @@
     .perdao button:hover {
       background-color: #c0392b;
     }
-    audio {
-      display: none;
+    iframe {
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
   </style>
 </head>
 <body>
-
-  <!-- ÁUDIO OCULTO -->
-  <audio id="player">
-    <source src="musicas/a-thousand-years.mp3" type="audio/mpeg">
-    Seu navegador não suporta áudio.
-  </audio>
 
   <header>
     <h1>Desculpa, Princesa 💔</h1>
     <p>Do seu Momozinho arrependido...</p>
   </header>
 
-  <!-- BOTÃO DE MÚSICA -->
+  <!-- PLAYER DO YOUTUBE -->
   <div class="musica">
-    <button id="botaoMusica">▶️ Tocar nossa música</button>
+    <p>🎵 Nossa música: “A Thousand Years”</p>
+    <iframe width="300" height="169"
+      src="https://www.youtube.com/embed/rtOvBOTyX00?controls=1"
+      title="A Thousand Years - Christina Perri"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
   </div>
 
   <!-- CARTA -->
@@ -130,29 +119,7 @@
     <button onclick="alert('Te amo pra sempre, minha princesa 💖')">Me perdoa, Princesa?</button>
   </section>
 
-  <!-- SCRIPT DO BOTÃO DE MÚSICA -->
-  <script>
-    const player = document.getElementById("player");
-    const botao = document.getElementById("botaoMusica");
-
-    botao.addEventListener("click", async () => {
-      try {
-        if (player.paused) {
-          await player.play();
-          botao.textContent = "⏸️ Pausar nossa música";
-        } else {
-          player.pause();
-          botao.textContent = "▶️ Tocar nossa música";
-        }
-      } catch (e) {
-        alert("Clique novamente para permitir o áudio 🎵");
-      }
-    });
-
-    player.addEventListener("ended", () => {
-      botao.textContent = "▶️ Tocar nossa música";
-    });
-  </script>
-
 </body>
 </html>
+
+Troca botão de música por player do YouTube
