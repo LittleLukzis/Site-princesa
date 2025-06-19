@@ -50,6 +50,7 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
       padding: 25px;
       margin: 20px auto;
+      transition: opacity 0.5s ease;
     }
 
     .musica {
@@ -66,6 +67,8 @@
       font-size: 1.1em;
       line-height: 1.6;
       margin: 0;
+      opacity: 1;
+      transition: opacity 0.6s ease;
     }
 
     .galeria {
@@ -101,13 +104,19 @@
       font-size: 1.1em;
       border-radius: 12px;
       cursor: pointer;
-      transition: 0.3s;
+      transition: 0.3s, box-shadow 0.3s;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     .perdao button:hover,
     .botao-secreto button:hover {
       background-color: #ee5253;
+      box-shadow: 0 0 15px 4px rgba(238, 82, 83, 0.7);
+    }
+
+    .perdao button:active,
+    .botao-secreto button:active {
+      box-shadow: 0 0 25px 6px rgba(238, 82, 83, 0.9);
     }
 
     .botao-secreto {
@@ -118,10 +127,30 @@
       display: none;
       text-align: center;
       font-size: 1.3em;
+      opacity: 0;
+      animation: fadeInSurpresa 1s forwards;
+      animation-delay: 0.2s;
+      margin-top: 20px;
+    }
+
+    .surpresa.show {
+      display: block;
+      opacity: 1;
     }
 
     .surpresa p {
-      margin: 0;
+      margin: 0 0 10px 0;
+    }
+
+    @keyframes fadeInSurpresa {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     footer {
@@ -183,9 +212,7 @@
 
     <!-- BOTÃO SECRETO -->
     <section class="botao-secreto">
-      <button onclick="document.getElementById('surpresa').style.display = 'block'">
-        💌 Clique aqui se ainda me ama
-      </button>
+      <button id="btn-secreto">💌 Clique aqui se ainda me ama</button>
     </section>
 
     <!-- MENSAGEM SECRETA -->
@@ -200,5 +227,23 @@
   <footer>
     Criado com amor pelo seu Momozinho 💕
   </footer>
+
+  <script>
+    const btnSecreto = document.getElementById('btn-secreto');
+    const surpresa = document.getElementById('surpresa');
+
+    btnSecreto.addEventListener('click', () => {
+      if (surpresa.classList.contains('show')) {
+        // Se já está visível, esconde
+        surpresa.classList.remove('show');
+      } else {
+        // Mostra com animação
+        surpresa.classList.add('show');
+        // Scroll suave até a surpresa
+        surpresa.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  </script>
+
 </body>
 </html>
