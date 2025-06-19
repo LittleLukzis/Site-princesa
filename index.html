@@ -4,108 +4,137 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Desculpa, Princesa 💔</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #f8a5c2, #f78fb3);
-      color: white;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to bottom, #f8cdda, #f78fb3);
+      color: #fff;
       overflow-x: hidden;
     }
+
     header {
       text-align: center;
-      padding: 50px 20px 20px;
+      padding: 60px 20px 30px;
+      background: linear-gradient(145deg, #ff9ff3, #f8a5c2);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
+
     header h1 {
-      font-size: 2.5em;
-      margin-bottom: 0;
+      font-size: 2.8em;
+      margin: 0;
     }
+
     header p {
       font-size: 1.2em;
-      margin-top: 0;
+      margin-top: 10px;
     }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .musica, .carta, .galeria, .perdao, .botao-secreto, .surpresa {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 25px;
+      margin: 20px auto;
+    }
+
     .musica {
       text-align: center;
-      margin-top: 20px;
     }
-    .carta {
-      padding: 30px;
-      max-width: 800px;
-      margin: 20px auto;
-      background-color: rgba(255, 255, 255, 0.15);
-      border-radius: 20px;
-      backdrop-filter: blur(5px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+
+    iframe {
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+      margin-top: 10px;
     }
+
+    .carta p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin: 0;
+    }
+
     .galeria {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
-      padding: 30px;
+      gap: 15px;
     }
+
     .galeria img {
-      width: 250px;
+      width: 220px;
       height: auto;
       border-radius: 15px;
       object-fit: cover;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
+
     .galeria img:hover {
       transform: scale(1.05);
     }
+
     .perdao {
       text-align: center;
-      padding: 40px 20px;
     }
-    .perdao button {
-      background-color: #e74c3c;
-      border: none;
-      color: white;
-      padding: 15px 30px;
-      font-size: 1.2em;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-      margin: 10px;
-    }
-    .perdao button:hover {
-      background-color: #c0392b;
-    }
-    .surpresa {
-      display: none;
-      text-align: center;
-      margin: 30px auto;
-      font-size: 1.4em;
-      background-color: rgba(255,255,255,0.2);
-      padding: 20px;
-      border-radius: 15px;
-      max-width: 600px;
-    }
-    .botao-secreto {
-      display: flex;
-      justify-content: center;
-      margin-top: 30px;
-    }
+
+    .perdao button,
     .botao-secreto button {
       background-color: #ff6b81;
       border: none;
       color: white;
-      padding: 12px 24px;
-      font-size: 1em;
+      padding: 14px 28px;
+      font-size: 1.1em;
       border-radius: 12px;
       cursor: pointer;
       transition: 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
+
+    .perdao button:hover,
     .botao-secreto button:hover {
       background-color: #ee5253;
+    }
+
+    .botao-secreto {
+      text-align: center;
+    }
+
+    .surpresa {
+      display: none;
+      text-align: center;
+      font-size: 1.3em;
+    }
+
+    .surpresa p {
+      margin: 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9em;
+      color: #fff;
     }
   </style>
 </head>
 <body>
 
+  <!-- EFEITO DE CORAÇÕES -->
   <script src="https://cdn.jsdelivr.net/gh/little-star/cloud-heart-effect/heart.min.js"></script>
 
   <header>
@@ -113,52 +142,63 @@
     <p>Do seu Momozinho arrependido...</p>
   </header>
 
-  <div class="musica">
-    <p>🎵 Nossa música: “A Thousand Years”</p>
-    <iframe width="300" height="169"
-      src="https://www.youtube.com/embed/rtOvBOTyX00?controls=1"
-      title="A Thousand Years - Christina Perri"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
+  <div class="container">
+
+    <!-- MÚSICA -->
+    <section class="musica">
+      <p>🎵 Nossa música: “A Thousand Years”</p>
+      <iframe width="300" height="169"
+        src="https://www.youtube.com/embed/rtOvBOTyX00?controls=1"
+        title="A Thousand Years - Christina Perri"
+        frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </section>
+
+    <!-- CARTA -->
+    <section class="carta">
+      <p>
+        Princesa,<br><br>
+        Eu sei que errei, e não vou tentar justificar. Só quero que saiba que você é o que eu tenho de mais precioso. Ver você magoada por algo que eu fiz me parte completamente.<br><br>
+        Meu erro foi feio, e entendo se você não quiser falar comigo agora. Mas cada segundo desde aquilo me fez perceber o quanto quero lutar por nós. Você me faz querer ser melhor.<br><br>
+        Eu não estou aqui pedindo um perdão rápido. Só quero que você veja, com cada detalhe desse site, o quanto você significa pra mim. E que meu amor por você é real e imenso.<br><br>
+        Te amo com todo meu coração. 💖
+      </p>
+    </section>
+
+    <!-- GALERIA -->
+    <section class="galeria">
+      <img src="fotos/1.jpg" alt="Princesa 1">
+      <img src="fotos/2.jpg" alt="Princesa 2">
+      <img src="fotos/3.jpg" alt="Juntos">
+      <img src="fotos/4.jpg" alt="Princesa 3">
+    </section>
+
+    <!-- PEDIDO DE PERDÃO -->
+    <section class="perdao">
+      <h2>Se você me der uma chance...</h2>
+      <button onclick="alert('Te amo pra sempre, minha princesa 💖')">Me perdoa, Princesa?</button>
+    </section>
+
+    <!-- BOTÃO SECRETO -->
+    <section class="botao-secreto">
+      <button onclick="document.getElementById('surpresa').style.display = 'block'">
+        💌 Clique aqui se ainda me ama
+      </button>
+    </section>
+
+    <!-- MENSAGEM SECRETA -->
+    <section id="surpresa" class="surpresa">
+      <p>Você encontrou meu segredo... 🌟</p>
+      <p>Eu só queria que soubesse que cada batida do meu coração é sua.</p>
+      <p>Você é meu destino, meu amor eterno, minha princesa! 👑💘</p>
+    </section>
+
   </div>
 
-  <section class="carta">
-    <p>
-      Princesa,<br><br>
-      Eu sei que errei, e não vou tentar justificar. Só quero que saiba que você é o que eu tenho de mais precioso. Ver você magoada por algo que eu fiz me parte completamente.<br><br>
-      Meu erro foi feio, e entendo se você não quiser falar comigo agora. Mas cada segundo desde aquilo me fez perceber o quanto quero lutar por nós. Você me faz querer ser melhor.<br><br>
-      Eu não estou aqui pedindo um perdão rápido. Só quero que você veja, com cada detalhe desse site, o quanto você significa pra mim. E que meu amor por você é real e imenso.<br><br>
-      Te amo com todo meu coração. 💖
-    </p>
-  </section>
-
-  <section class="galeria">
-    <img src="fotos/1.jpg" alt="Princesa 1">
-    <img src="fotos/2.jpg" alt="Princesa 2">
-    <img src="fotos/3.jpg" alt="Juntos">
-    <img src="fotos/4.jpg" alt="Princesa 3">
-  </section>
-
-  <section class="perdao">
-    <h2>Se você me der uma chance...</h2>
-    <button onclick="alert('Te amo pra sempre, minha princesa 💖')">Me perdoa, Princesa?</button>
-  </section>
-
-  <!-- BOTÃO SECRETO -->
-  <div class="botao-secreto">
-    <button onclick="document.getElementById('surpresa').style.display = 'block'">
-      💌 Clique aqui se ainda me ama
-    </button>
-  </div>
-
-  <!-- MENSAGEM SECRETA -->
-  <div id="surpresa" class="surpresa">
-    Você encontrou o meu segredo... 🌟<br>
-    Eu só queria que soubesse que cada batida do meu coração é sua.<br>
-    Você é meu destino, meu amor eterno, minha princesa! 👑💘
-  </div>
-
+  <footer>
+    Criado com amor por Momozinho 💕
+  </footer>
 </body>
 </html>
