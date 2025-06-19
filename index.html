@@ -90,6 +90,7 @@
 <body>
   <audio id="player">
     <source src="a-thousand-years.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
   </audio>
 
   <header>
@@ -98,7 +99,7 @@
   </header>
 
   <div class="musica">
-    <button onclick="document.getElementById('player').play()">▶️ Tocar nossa música</button>
+    <button id="botaoMusica">▶️ Tocar nossa música</button>
   </div>
 
   <section class="carta">
@@ -122,5 +123,25 @@
     <h2>Se você me der uma chance...</h2>
     <button onclick="alert('Te amo pra sempre, minha princesa 💖')">Me perdoa, Princesa?</button>
   </section>
+
+  <script>
+    const player = document.getElementById('player');
+    const botaoMusica = document.getElementById('botaoMusica');
+
+    botaoMusica.addEventListener('click', () => {
+      if (player.paused) {
+        player.play();
+        botaoMusica.textContent = '⏸️ Pausar nossa música';
+      } else {
+        player.pause();
+        botaoMusica.textContent = '▶️ Tocar nossa música';
+      }
+    });
+
+    // Opcional: quando a música terminar, volta o botão para "Tocar"
+    player.addEventListener('ended', () => {
+      botaoMusica.textContent = '▶️ Tocar nossa música';
+    });
+  </script>
 </body>
 </html>
