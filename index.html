@@ -9,7 +9,7 @@
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #2c3e50, #3498db);
+      background: linear-gradient(to bottom, #f8a5c2, #f78fb3);
       color: white;
       overflow-x: hidden;
     }
@@ -32,10 +32,11 @@
     .carta {
       padding: 30px;
       max-width: 800px;
-      margin: 0 auto;
-      background-color: rgba(255, 255, 255, 0.1);
+      margin: 20px auto;
+      background-color: rgba(255, 255, 255, 0.15);
       border-radius: 20px;
       backdrop-filter: blur(5px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     }
     .galeria {
       display: flex;
@@ -50,6 +51,10 @@
       border-radius: 15px;
       object-fit: cover;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+    .galeria img:hover {
+      transform: scale(1.05);
     }
     .perdao {
       text-align: center;
@@ -69,20 +74,45 @@
     .perdao button:hover {
       background-color: #c0392b;
     }
-    iframe {
+    .surpresa {
+      display: none;
+      text-align: center;
+      margin: 30px auto;
+      font-size: 1.4em;
+      background-color: rgba(255,255,255,0.2);
+      padding: 20px;
       border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      max-width: 600px;
+    }
+    .botao-secreto {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .botao-secreto button {
+      background-color: #ff6b81;
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      font-size: 1em;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .botao-secreto button:hover {
+      background-color: #ee5253;
     }
   </style>
 </head>
 <body>
+
+  <script src="https://cdn.jsdelivr.net/gh/little-star/cloud-heart-effect/heart.min.js"></script>
 
   <header>
     <h1>Desculpa, Princesa 💔</h1>
     <p>Do seu Momozinho arrependido...</p>
   </header>
 
-  <!-- PLAYER DO YOUTUBE -->
   <div class="musica">
     <p>🎵 Nossa música: “A Thousand Years”</p>
     <iframe width="300" height="169"
@@ -94,7 +124,6 @@
     </iframe>
   </div>
 
-  <!-- CARTA -->
   <section class="carta">
     <p>
       Princesa,<br><br>
@@ -105,7 +134,6 @@
     </p>
   </section>
 
-  <!-- GALERIA DE FOTOS -->
   <section class="galeria">
     <img src="fotos/1.jpg" alt="Princesa 1">
     <img src="fotos/2.jpg" alt="Princesa 2">
@@ -113,13 +141,24 @@
     <img src="fotos/4.jpg" alt="Princesa 3">
   </section>
 
-  <!-- BOTÃO DE PERDÃO -->
   <section class="perdao">
     <h2>Se você me der uma chance...</h2>
     <button onclick="alert('Te amo pra sempre, minha princesa 💖')">Me perdoa, Princesa?</button>
   </section>
 
+  <!-- BOTÃO SECRETO -->
+  <div class="botao-secreto">
+    <button onclick="document.getElementById('surpresa').style.display = 'block'">
+      💌 Clique aqui se ainda me ama
+    </button>
+  </div>
+
+  <!-- MENSAGEM SECRETA -->
+  <div id="surpresa" class="surpresa">
+    Você encontrou o meu segredo... 🌟<br>
+    Eu só queria que soubesse que cada batida do meu coração é sua.<br>
+    Você é meu destino, meu amor eterno, minha princesa! 👑💘
+  </div>
+
 </body>
 </html>
-
-Troca botão de música por player do YouTube
